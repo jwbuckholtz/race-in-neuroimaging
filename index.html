@@ -77,76 +77,76 @@ code { font-family: var(--font-mono); font-size: 12px; background: var(--color-b
 pre.query-block { background: var(--color-background-secondary); padding: 12px; border-radius: var(--border-radius-md); font-family: var(--font-mono); font-size: 12px; line-height: 1.5; overflow-x: auto; white-space: pre-wrap; word-break: break-word; }
 </style>
 
-<h2 class="sr-only">Dashboard: how race has been used in neuroimaging studies, headlined by Haiku full-text classifications of a 1,238-PDF curated reading library and supplemented by a broad PubMed sweep.</h2>
+<h2 class="sr-only">Dashboard: how race has been used in neuroimaging studies, headlined by Haiku full-text classifications of a 1,238-PDF focused PubMed search of 1,238 brain-MRI papers and supplemented by a broad PubMed sweep.</h2>
 
 <div style="padding: 0.25rem 0 1rem;">
   <h1 style="font-size: 22px; font-weight: 500; margin: 0 0 6px;">Race as a variable in neuroimaging</h1>
-  <p style="font-size: 13px; color: var(--color-text-secondary); margin: 0;">Headline analysis: 1,238 curated PDFs read full-text by Claude Haiku 4.5. Supplementary broad sweep: 4,887 PubMed-indexed papers (2000 – May 2026), abstract-only with a regex classifier. The PubMed sweep is included as context — the Haiku numbers are the more methodologically reliable estimate of how race is used in this literature.</p>
+  <p style="font-size: 13px; color: var(--color-text-secondary); margin: 0;">Headline analysis: 1,238 papers from a focused PubMed search (MRI AND brain AND race, run 2026-05-14), full-text read by Claude Haiku 4.5. Supplementary broad sweep: 4,887 papers from a wider PubMed search (neuroimaging × race/ethnicity union, run 2026-05-14), classified from abstracts by a regex heuristic. The focused-search numbers are the more methodologically reliable estimate of how race is used in brain-MRI research, because the classifier reads the methods section.</p>
 </div>
 
 <div class="metric-grid">
   <div class="metric">
-    <p class="metric-label">Curated Drive corpus</p>
+    <p class="metric-label">Focused search corpus</p>
     <p class="metric-val">1,238</p>
-    <p class="metric-sub">full-text, Haiku 4.5</p>
+    <p class="metric-sub">MRI × brain × race, Haiku 4.5</p>
   </div>
   <div class="metric">
     <p class="metric-label">Substantive use</p>
     <p class="metric-val">468</p>
-    <p class="metric-sub">37.8% of Drive corpus</p>
+    <p class="metric-sub">37.8% of focused corpus</p>
   </div>
   <div class="metric">
     <p class="metric-label">Nuisance covariate</p>
     <p class="metric-val">416</p>
-    <p class="metric-sub">33.6% of Drive corpus</p>
+    <p class="metric-sub">33.6% of focused corpus</p>
   </div>
   <div class="metric">
-    <p class="metric-label">PubMed broad context</p>
+    <p class="metric-label">Broad PubMed sweep</p>
     <p class="metric-val">4,887</p>
-    <p class="metric-sub">abstract-only, regex</p>
+    <p class="metric-sub">neuroimaging × race union, regex</p>
   </div>
 </div>
 
 <div class="dash-section">
-  <h2 class="dash-h2">How race is used — primary classification (Drive corpus, Haiku full-text)</h2>
+  <h2 class="dash-h2">How race is used — primary classification (focused brain-MRI search, Haiku full-text)</h2>
   <p class="dash-note">Each paper assigned to one mutually exclusive category. Substantive uses (top group) treat race as a variable to interpret. Adjustment uses (middle) include race statistically without interpreting it. Incidental uses (bottom) mention race in demographics without analytic role or are false positives.</p>
   <div style="position: relative; width: 100%; height: 360px;">
-    <canvas id="catChart" role="img" aria-label="Horizontal bar chart of nine race-use categories with paper counts from the Drive Haiku corpus">Drive Haiku primary categories: nuisance covariate 416, sample descriptor only 275, primary variable 258, disparities causal 114, disparities descriptive 67, matching variable 45, false positive 30, methodological critique 29, cannot determine 4.</canvas>
+    <canvas id="catChart" role="img" aria-label="Horizontal bar chart of nine race-use categories with paper counts from the Focused search corpus">Focused search primary categories: nuisance covariate 416, sample descriptor only 275, primary variable 258, disparities causal 114, disparities descriptive 67, matching variable 45, false positive 30, methodological critique 29, cannot determine 4.</canvas>
   </div>
 </div>
 
 <div class="dash-section">
   <h2 class="dash-h2">Substantive-use categories over time</h2>
-  <p class="dash-note">Per-year count of papers in the four substantive categories, Drive corpus. Earliest entries reach back to the 1990s; counts are sparse before 2005.</p>
+  <p class="dash-note">Per-year count of papers in the four substantive categories, focused brain-MRI search. Earliest entries reach back to the 1990s; counts are sparse before 2005.</p>
   <div class="legend-row" id="trendLegend"></div>
   <div style="position: relative; width: 100%; height: 280px;">
-    <canvas id="trendChart" role="img" aria-label="Line chart showing substantive-use papers per year from 1989 to 2026 in the Drive Haiku corpus">Substantive-use papers in the curated library accelerate sharply after 2018, with primary-variable studies dominating throughout and disparities-causal work emerging strongly post-2019.</canvas>
+    <canvas id="trendChart" role="img" aria-label="Line chart showing substantive-use papers per year from 1989 to 2026 in the Focused search corpus">Substantive-use papers in the curated library accelerate sharply after 2018, with primary-variable studies dominating throughout and disparities-causal work emerging strongly post-2019.</canvas>
   </div>
 </div>
 
 <div class="dash-section">
   <h2 class="dash-h2">By modality</h2>
-  <p class="dash-note">Drive corpus, papers can have more than one modality tag. <em>MRI unspec</em> means MRI is mentioned without naming a subtype.</p>
+  <p class="dash-note">Focused corpus, papers can have more than one modality tag (note: focused search restricts to MRI by design — non-MRI modalities reflect papers indexed as MRI that also use additional modalities). <em>MRI unspec</em> means MRI is mentioned without naming a subtype.</p>
   <div style="position: relative; width: 100%; height: 280px;">
-    <canvas id="modChart" role="img" aria-label="Bar chart of paper counts by neuroimaging modality, Drive Haiku corpus">By modality in the Drive corpus: MRI unspecified 489, sMRI 413, fMRI 310, DTI 121, PET 58, EEG 13, CT 12, MEG 10, other minor modalities.</canvas>
+    <canvas id="modChart" role="img" aria-label="Bar chart of paper counts by neuroimaging modality, Focused search corpus">By modality in the focused-search corpus: MRI unspecified 489, sMRI 413, fMRI 310, DTI 121, PET 58, EEG 13, CT 12, MEG 10, other minor modalities.</canvas>
   </div>
 </div>
 
 <div class="dash-section">
   <h2 class="dash-h2">Example papers per category</h2>
-  <p class="dash-note">Highest-confidence picks from the Drive corpus, with Haiku's one-line evidence quote. These are the papers most clearly representative of each category.</p>
+  <p class="dash-note">Highest-confidence picks from the focused brain-MRI search, with Haiku's one-line evidence quote. These are the papers most clearly representative of each category.</p>
   <div class="cat-cards" id="catCards"></div>
 </div>
 
 <div class="dash-section">
-  <h2 class="dash-h2">Broad PubMed context (n=4,887, regex on abstracts)</h2>
-  <p class="dash-note">For context, the broad PubMed sweep used a regex classifier on abstracts alone — much less accurate than Haiku on full text. The chart below puts the two corpora side by side. As you'd expect for a hand-curated reading list, the Drive corpus has a far higher rate of substantive race-use (38% vs. 11%), and Haiku's full-text read also detects roughly 3x more nuisance-covariate usage than the regex catches from abstracts.</p>
+  <h2 class="dash-h2">Comparison to broad PubMed sweep (n=4,887, regex on abstracts)</h2>
+  <p class="dash-note">For comparison, the broad PubMed sweep used a regex classifier on abstracts alone — much less accurate than Haiku on full text, and on a much broader query (race-or-ethnicity terminology across seven neuroimaging modalities). The chart below puts the two corpora side by side. The focused brain-MRI search has a higher rate of substantive race-use (38% vs. 11%), and Haiku's full-text read also detects roughly 3x more nuisance-covariate usage than the regex catches from abstracts.</p>
   <div class="legend-row">
-    <span><span class="dot" style="background:#0F6E56;"></span>Drive Haiku (n=1,238)</span>
-    <span><span class="dot" style="background:#534AB7;"></span>PubMed regex (n=4,887)</span>
+    <span><span class="dot" style="background:#0F6E56;"></span>Focused search, Haiku (n=1,238)</span>
+    <span><span class="dot" style="background:#534AB7;"></span>Broad sweep, regex (n=4,887)</span>
   </div>
   <div style="position: relative; width: 100%; height: 360px;">
-    <canvas id="compareChart" role="img" aria-label="Grouped horizontal bar chart comparing Drive Haiku and PubMed regex corpora as percentages across nine categories">Comparison of Drive Haiku (n=1,238) and PubMed regex (n=4,887) corpora. Drive shows higher proportions in primary variable, disparities causal, nuisance covariate, and methodological critique. PubMed shows higher proportion in sample descriptor only and false positive — consistent with abstract-only classification missing methods-section detail.</canvas>
+    <canvas id="compareChart" role="img" aria-label="Grouped horizontal bar chart comparing Focused search and Broad sweep corpora as percentages across nine categories">Comparison of Focused search, Haiku (n=1,238) and Broad sweep, regex (n=4,887) corpora. Drive shows higher proportions in primary variable, disparities causal, nuisance covariate, and methodological critique. PubMed shows higher proportion in sample descriptor only and false positive — consistent with abstract-only classification missing methods-section detail.</canvas>
   </div>
     <p class="dash-note" style="margin-top: 1rem; font-size: 12px; color: var(--color-text-tertiary);">PubMed data freeze: 2026-05-14. To refresh, re-run <code>pull_corpus.py</code> and <code>classify.py</code> locally.</p>
 </div>
@@ -155,14 +155,14 @@ pre.query-block { background: var(--color-background-secondary); padding: 12px; 
   <h2 class="dash-h2">Methodology and caveats</h2>
   <details open>
     <summary>What's classified, with which classifier</summary>
-    <p>Two corpora, two classifiers. The Drive reading library (1,238 PDFs curated by hand) was read full-text — title, abstract, introduction, and methods — by Claude Haiku 4.5 with a structured classification prompt covering all nine categories plus tag dimensions. This is the headline analysis on which the metrics, trends, modality breakdown, and exemplars on this dashboard are based.</p>
-    <p>The PubMed broad sweep is the broader literature scoped via NCBI E-utilities, restricted to 2000–2026 and to neuroimaging × race/ethnicity terminology. Its 4,887 abstracts were classified by a regex heuristic and hand-validated on a 78-paper stratified sample (estimated 75–85% accuracy on substantive categories). The PubMed numbers are useful as context for the broader literature, but the Haiku Drive analysis is the more reliable signal on the proportional question.</p>
+    <p>Two PubMed searches and two classifiers. The focused search (1,238 papers) used the explicit query `MRI AND brain AND race` against PubMed on 2026-05-14, and the resulting PDFs were read full-text — title, abstract, introduction, and methods — by Claude Haiku 4.5 with a structured classification prompt covering all nine categories plus tag dimensions. This is the headline analysis on which the metrics, trends, modality breakdown, and exemplars on this dashboard are based.</p>
+    <p>The broad sweep was scoped via NCBI E-utilities on 2026-05-14, restricted to 2000–2026, using a union of seven neuroimaging terms and six race-or-ethnicity terms. Its 4,887 abstracts were classified by a regex heuristic and hand-validated on a 78-paper stratified sample (estimated 75–85% accuracy on substantive categories). The PubMed numbers are useful as context for the broader literature, but the Haiku Drive analysis is the more reliable signal on the proportional question.</p>
   </details>
   <details>
-    <summary>Search strategy (PubMed sweep)</summary>
-    <p>Search ran against NCBI PubMed via E-utilities on May 14, 2026. The query unions MeSH headings and title/abstract terms for neuroimaging and race/ethnicity:</p>
+    <summary>Search strategies (both queries)</summary>
+    <p>Both searches ran against NCBI PubMed via E-utilities on 2026-05-14. The focused search:</p>
     <pre class="query-block">("Neuroimaging"[MeSH] OR "Magnetic Resonance Imaging"[MeSH] OR "Positron-Emission Tomography"[MeSH] OR "Electroencephalography"[MeSH] OR "Magnetoencephalography"[MeSH] OR "Spectroscopy, Near-Infrared"[MeSH] OR "Diffusion Tensor Imaging"[MeSH] OR neuroimaging[TIAB] OR "magnetic resonance imaging"[TIAB] OR fMRI[TIAB] OR "diffusion tensor"[TIAB] OR "positron emission tomography"[TIAB] OR electroencephalography[TIAB] OR magnetoencephalography[TIAB] OR "near-infrared spectroscopy"[TIAB]) AND ("Racial Groups"[MeSH] OR "Ethnicity"[MeSH] OR race[TIAB] OR racial[TIAB] OR ethnicity[TIAB] OR ethnic[TIAB]) AND ("2000"[PDAT] : "2026"[PDAT])</pre>
-    <p>Databases consulted: PubMed only. Full text was not retrieved for the PubMed sweep; for the Drive corpus, full PDF text was extracted from a synced local copy of the user's curated <code>Race_Coef</code> folder.</p>
+    <p>Databases consulted: PubMed only. Full text was not retrieved for the broad PubMed sweep; for the focused-search corpus, full PDF text was extracted from the user's synced reference library of the 1,238 PubMed-retrieved articles.</p>
   </details>
   <details>
     <summary>Classification scheme (nine mutually exclusive categories)</summary>
@@ -172,18 +172,18 @@ pre.query-block { background: var(--color-background-secondary); padding: 12px; 
   </details>
   <details>
     <summary>Why Haiku full-text is more reliable than abstract regex</summary>
-    <p>The regex classifier reads only the abstract, so it routinely misses the "adjusted for age, sex, race/ethnicity" sentence that lives in the methods section. On the Drive corpus, Haiku reads the first seven pages of each PDF — including the methods — and finds nuisance-covariate use in 34% of papers vs. 12% for the regex. The same gap likely exists in the broad PubMed sweep: the true rate of nuisance-covariate usage there is almost certainly also around 30%, but cannot be confirmed without running Haiku on those 4,887 abstracts too. A script to do that (<code>classify_pubmed_with_haiku.py</code>) is saved alongside this dashboard and can be run locally with an Anthropic API key.</p>
+    <p>The regex classifier reads only the abstract, so it routinely misses the "adjusted for age, sex, race/ethnicity" sentence that lives in the methods section. On the focused-search corpus, Haiku reads the first seven pages of each PDF — including the methods — and finds nuisance-covariate use in 34% of papers vs. 12% for the regex. The same gap likely exists in the broad PubMed sweep: the true rate of nuisance-covariate usage there is almost certainly also around 30%, but cannot be confirmed without running Haiku on those 4,887 abstracts too. A script to do that (<code>classify_pubmed_with_haiku.py</code>) is saved alongside this dashboard and can be run locally with an Anthropic API key.</p>
   </details>
   <details>
     <summary>Files and reproducibility</summary>
-    <p>All processing scripts and data are saved in the working folder: <code>pull_corpus.py</code> (PubMed pull), <code>classify.py</code> (regex classifier), <code>classify_with_haiku.py</code> (Drive Haiku run), <code>classify_pubmed_with_haiku.py</code> (PubMed Haiku run, ready to execute), <code>corpus.jsonl</code>, <code>classified.jsonl</code>, <code>drive_classified.jsonl</code>, <code>dashboard_data.json</code>, <code>drive_dashboard_data.json</code>.</p>
+    <p>All processing scripts and data are saved in the working folder: <code>pull_corpus.py</code> (PubMed pull), <code>classify.py</code> (regex classifier), <code>classify_with_haiku.py</code> (Focused search run), <code>classify_pubmed_with_haiku.py</code> (PubMed Haiku run, ready to execute), <code>corpus.jsonl</code>, <code>classified.jsonl</code>, <code>drive_classified.jsonl</code>, <code>dashboard_data.json</code>, <code>drive_dashboard_data.json</code>.</p>
   </details>
 </div>
 
 
 <div class="dash-section" style="border-top: 0.5px solid var(--color-border-tertiary); padding-top: 1rem; font-size: 12px; color: var(--color-text-secondary); margin-top: 2rem;">
-  <p style="margin: 0 0 4px;">Data: NCBI PubMed E-utilities (n=4,887, 2000–2026) and a curated reading library of 1,238 PDFs.</p>
-  <p style="margin: 0 0 4px;">Classifications: regex heuristic (PubMed, abstract-only) and Claude Haiku 4.5 (Drive, full-text). Hand-validated on a 78-paper stratified sample.</p>
+  <p style="margin: 0 0 4px;">Data: NCBI PubMed E-utilities — broad sweep (n=4,887, neuroimaging × race/ethnicity union) and focused search (n=1,238, MRI × brain × race), both run 2026-05-14.</p>
+  <p style="margin: 0 0 4px;">Classifications: regex heuristic (broad sweep, abstract-only) and Claude Haiku 4.5 (focused search, full-text). Regex classifier hand-validated on a 78-paper stratified sample.</p>
   <p style="margin: 0;">Source &amp; scripts: <a href="https://github.com/jwbuckholtz/race-in-neuroimaging">github.com/jwbuckholtz/race-in-neuroimaging</a></p>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
@@ -322,12 +322,12 @@ pre.query-block { background: var(--color-background-secondary); padding: 12px; 
   new Chart(document.getElementById('compareChart'), {
     type: 'bar',
     data: { labels: catLabels, datasets: [
-      { label: 'Drive Haiku',  data: drPct, backgroundColor: '#0F6E56', barThickness: 11, borderWidth: 0 },
-      { label: 'PubMed regex', data: pmPct, backgroundColor: '#534AB7', barThickness: 11, borderWidth: 0 },
+      { label: 'Focused search',  data: drPct, backgroundColor: '#0F6E56', barThickness: 11, borderWidth: 0 },
+      { label: 'Broad sweep', data: pmPct, backgroundColor: '#534AB7', barThickness: 11, borderWidth: 0 },
     ]},
     options: {
       indexAxis: 'y', responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(ctx){ var src = ctx.dataset.label === 'Drive Haiku' ? drive : pubmed; var n = src.totals[CAT_ORDER[ctx.dataIndex]] || 0; return ctx.dataset.label + ': ' + ctx.parsed.x.toFixed(1) + '% (n=' + fmt(n) + ')'; } } } },
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(ctx){ var src = ctx.dataset.label === 'Focused search' ? drive : pubmed; var n = src.totals[CAT_ORDER[ctx.dataIndex]] || 0; return ctx.dataset.label + ': ' + ctx.parsed.x.toFixed(1) + '% (n=' + fmt(n) + ')'; } } } },
       scales: {
         x: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.06)' }, ticks: { color: '#5F5E5A', callback: function(v){ return v + '%'; } } },
         y: { grid: { display: false }, ticks: { color: '#444441', font: { size: 12 } } },
