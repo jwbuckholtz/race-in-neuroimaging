@@ -1,0 +1,21 @@
+# Secrets — never commit
+.anthropic_key
+.env
+.env.*
+*.key
+*api_key*
+
+# Raw / large data — keep out of the published repo
+corpus.jsonl
+classified.jsonl
+drive_classified.jsonl
+pubmed_haiku_classified.jsonl
+raw_xml/
+*.errors.log
+
+# Local working files
+__pycache__/
+*.pyc
+.DS_Store
+.vscode/
+.idea/
