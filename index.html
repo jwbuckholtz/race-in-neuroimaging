@@ -335,25 +335,6 @@ pre.query-block { background: var(--color-background-secondary); padding: 12px; 
     },
   });
 
-      var body = null;
-      if (typeof res === 'string') body = parseHttpBody(res);
-      else if (res && Array.isArray(res.content)) body = parseHttpBody(res.content.filter(function(c){return c.type==='text';}).map(function(c){return c.text;}).join('\n'));
-      else if (res && res.text) body = parseHttpBody(res.text);
-      var m = (body||'').match(/"count"\s*:\s*"(\d+)"/);
-      if (!m) throw new Error('no count in response');
-      var n = parseInt(m[1], 10);
-      liveEl.textContent = fmt(n);
-      var d = n - pubmed.corpus_size;
-      liveSub.textContent = (d >= 0 ? '+' : '') + fmt(d) + ' vs. analyzed corpus';
-      msgEl.textContent = 'Live total fetched ' + new Date().toLocaleDateString() + '.';
-    } catch (e) {
-      liveEl.textContent = '—';
-      liveSub.textContent = 'fetch failed';
-      msgEl.textContent = 'Could not reach PubMed: ' + (e && e.message ? e.message : 'unknown');
-    } finally {
-      btn.disabled = false;
-    }
-  });
 })();
 </script>
 
