@@ -41,7 +41,7 @@ Aggregated outputs (used by the dashboard) are in `data/`:
 
 ## Caveats
 
-- The Drive library is a personal reading list. It is **not** a probability sample of the neuroimaging literature; it overrepresents substantive-use papers and methodological critiques relative to the field.
+- The Drive library is a hand-curated list, and likely a more accurate picture of the neuroimaging literature (as opposed to, e.g. cardiac/breast MRI)
 - The PubMed sweep covers only PubMed-indexed work. Web of Science, Embase, PsycINFO, and preprint servers would broaden coverage; full-text retrieval would also reveal nuisance-covariate use the abstract-only pass missed.
 - "Race operationalization" is rarely stated in abstracts (538 unspecified vs. 20 self-report and 1 ancestry-based among the substantive-use PubMed papers). Most studies do not document how race was measured.
 
